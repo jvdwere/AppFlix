@@ -15,7 +15,7 @@ const MovieBanner = ({ image, name, sinopse, date }) => {
                     alt="capa"
                     objectFit={"cover"}
                 />
-                <Flex mt={"-300px"} color={"white"} h={"290px"}>
+                {/* <Flex mt={"-300px"} color={"white"} h={"290px"}>
                     <Flex
                         backdropFilter="auto"
                         backdropBrightness='50%'
@@ -34,7 +34,7 @@ const MovieBanner = ({ image, name, sinopse, date }) => {
 
                         </Box>
                     </Flex>
-                </Flex>
+                </Flex> */}
             </Box>
 
         </Flex>
