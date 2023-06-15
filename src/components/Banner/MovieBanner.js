@@ -3,31 +3,42 @@ import react from "react";
 import { Img, Box, Flex, Heading, Text } from "@chakra-ui/react";
 
 const MovieBanner = ({ image, name, sinopse, date }) => {
-    return (
-        <Box >
-            <Img
-                h="700px"
-                src={image}
-                alt="capa" />
 
-            <Flex>
-                <Flex className="name-info"
-                    backdropFilter="auto"
-                    backdropBrightness='50%'
-                    backdropBlur={"5px"}
-                    color={'white'}
-                    mt={"-200px"}
-                    w={"1245px"}
-                    h={"200px"}>
-                    <Box ml={'20px'} mt={'10px'}>
-                        <Heading >{name}</Heading>
-                        <Text mt={'20px'} w={"1145px"}>{sinopse}</Text>
-                        <Text w={"1145px"}>Lançamento: {date}</Text>
-                       
-                    </Box>
+    return (
+
+
+        <Flex justifyContent={"center"} >
+            <Box>
+                <Img
+                    h={{ xl: "750px", lg: "500px", md: "300px", sm: "200px", base: "200px" }}
+                    src={image}
+                    alt="capa"
+                    objectFit={"cover"}
+                />
+                <Flex mt={"-300px"} color={"white"} h={"290px"}>
+                    <Flex
+                        backdropFilter="auto"
+                        backdropBrightness='50%'
+                        backdropBlur={"5px"}
+                        w={"1145px"}
+                    >
+                        <Box
+                            ml={'20px'}
+                            mt={'10px'}>
+                            <Heading>{name}</Heading>
+                            <Text
+                                mt={'20px'}
+                                
+                            >{sinopse}</Text>
+                            <Text >Lançamento: {date}</Text>
+
+                        </Box>
+                    </Flex>
                 </Flex>
-            </Flex>
-        </Box>
+            </Box>
+
+        </Flex>
+
     )
 }
 export default MovieBanner

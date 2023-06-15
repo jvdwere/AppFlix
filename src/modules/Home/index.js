@@ -19,8 +19,8 @@ export default function Home() {
             </Head>
             <HeaderL />
             <BannerSlide />
-            <MoviesRow cat={next} lista="Proximos lançamentos" />
             <MoviesRow cat={trending} lista="Destaques do Mes" />
+            <MoviesRow cat={next} lista="Proximos lançamentos" />
         </>
 
 

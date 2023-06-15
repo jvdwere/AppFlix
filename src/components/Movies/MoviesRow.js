@@ -6,7 +6,7 @@ import MyCard from "./MovieCard";
 import { apiBase, apiKey } from "../../../lib/tmdb";
 
 
-const MoviesRow = ({cat, lista}) => {
+const MoviesRow = ({ cat, lista }) => {
   const [state, setState] = useState();
 
   useEffect(() => {
@@ -20,50 +20,53 @@ const MoviesRow = ({cat, lista}) => {
     }
 
     call();
-  }, );
+  },);
 
 
   const settings = {
     arrows: true,
-    dots: true,
-    infinite: false,
-    slidesToShow: 7.2,
-    slidesToScroll: 4,
+    centerMode: true,
+    infinite: true,
+    slidesToShow: 7,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: true,
-          dots: true
+      
+
         }
       },
       {
         breakpoint: 600,
         settings: {
+          arrows: false,
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToScroll: 1,
+          initialSlide: 1
         }
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          arrows: false,
+          slidesToShow:1,
+          slidesToScroll: 1,
+          initialSlide: 1
         }
       },
     ],
   };
   return (
     <>
-    <Box className="box-slider">
-      <Text className='categories'>{lista}</Text>
-      <Slider className="slider-cat" {...settings}>
-        {state && state.map((item) => <MyCard img={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.poster_path}`} key={item.title} />)}
-      </Slider>
-    </Box>
+      <Box w={{xl:"96%", lg:"94%",md:"92%",sm:"90%"}} margin={"auto"}>
+        <Text className='categories' mt={'30px'}>{lista}</Text>
+        <Slider className="slider-cat" {...settings}>
+          {state && state.map((item) => <MyCard img={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.poster_path}`} key={item.title} />)}
+        </Slider>
+      </Box>
     </>
 
 
