@@ -9,17 +9,14 @@ body {
  z-index: 9999;
 }
 .box-banner{
-    width: 95%;
     margin: auto;
-    margin-top:50px;
+    width: 95%;
+    margin-top:80px;
 }
-.box-slider {
-    width: 90%;
-    margin-left: 130px;
-    margin-top: 10px;
-}
+
 .categories {
     color: aliceblue;
     font-style: bold;
     font-size: 18pt;
 }
+

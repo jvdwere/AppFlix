@@ -26,31 +26,28 @@ export default function BannerSlider() {
 
 
   const settings = {
-    arrows: true,
+    
     className: "center",
     centerMode: true,
     infinite: true,
-    centerPadding: "260px",
+    centerPadding: "160px",
     slidesToShow: 1,
-    slidesToScroll: 1,
-    speed: 300,
-    autoplay: true,
-    autoplaySpeed: 7000,
-    pauseOnHover: true,
+    speed: 500,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1,
+          centerPadding: "160px",
           slidesToScroll: 1,
-          infinite: true,
-          dots: true
+       
         }
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
+          centerPadding: "40px",
           slidesToScroll: 1,
           initialSlide: 1
         }
@@ -59,10 +56,11 @@ export default function BannerSlider() {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
+          centerPadding: "30px",
           slidesToScroll: 1
         }
-      },
-    ],
+      }
+    ]
   };
 
   return (
