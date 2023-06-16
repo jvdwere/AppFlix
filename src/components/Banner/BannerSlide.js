@@ -3,30 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Box, Flex, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import Slider from "react-slick";
 import MovieBanner from "./MovieBanner";
-import { apiBase, apiKey } from "../../../lib/tmdb";
 
-
-export default function BannerSlider() {
-  const [state, setState] = useState();
-
-  useEffect(() => {
-    async function call() {
-      const response = await fetch(
-        // "https://api.themoviedb.org/3/movie/popular?api_key=506fadb0256c13349acc05dabebf9604&language=en-US&page=1"
-        `${apiBase}/movie/now_playing?api_key=${apiKey}&language=pt-BR`
-      );
-      const data = await response.json();
-
-      setState(data.results);
-    }
-
-    call();
-  }, []);
-
+const BannerSlider = ({state}) => {
 
 
   const settings = {
-    
+
     className: "center",
     centerMode: true,
     infinite: true,
@@ -40,7 +22,7 @@ export default function BannerSlider() {
           slidesToShow: 1,
           centerPadding: "160px",
           slidesToScroll: 1,
-       
+
         }
       },
       {
@@ -74,13 +56,4 @@ export default function BannerSlider() {
     </Flex>
   );
 };
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:3000/api/trending");
-//   const json = await res.json();
-
-//   return {
-//     props: {
-//       list: json.list
-//     }
-//   };
-// }
+export default BannerSlider;
