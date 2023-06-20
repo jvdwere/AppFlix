@@ -50,7 +50,7 @@ const BannerSlider = ({state}) => {
       <Box
         className="box-banner">
         <Slider className="slide-banner" {...settings}>
-          {state && state.map(item => (<MovieBanner date={item.release_date} sinopse={item.overview} name={item.title} image={`https://www.themoviedb.org/t/p/original/${item.backdrop_path}`} key={item.title} />))}
+          {state && state.map(item => (<MovieBanner it={item} date={item.release_date} sinopse={item.overview} name={item.title} image={`https://www.themoviedb.org/t/p/original/${item.backdrop_path}`} key={item.title} />))}
         </Slider>
       </Box >
     </Flex>
