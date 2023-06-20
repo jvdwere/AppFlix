@@ -1,7 +1,7 @@
 import react from "react";
 import { Box, Flex } from "@chakra-ui/react";
 import Hamburger from "./Menu/Hamburger";
-import InputSearch from "./InputSearch";
+import SearchInput from "./SearchInput";
 import LogButton from "../Auth/LogButton";
 
 const HeaderL = () => {
@@ -13,9 +13,8 @@ const HeaderL = () => {
             <Hamburger />
             <Flex
                 justifyContent={"center"}
-          
                 width={"100%"}>
-                <InputSearch />
+                <SearchInput />
             </Flex>
             <LogButton />
         </Flex>

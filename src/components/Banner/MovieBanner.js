@@ -1,20 +1,23 @@
 /* eslint-disable jsx-a11y/alt-text */
 import react from "react";
 import { Img, Box, Flex, Heading, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
-const MovieBanner = ({ image, name, sinopse, date }) => {
+const MovieBanner = ({ image, name, sinopse, date, it }) => {
 
     return (
 
 
         <Flex justifyContent={"center"} >
             <Box>
-                <Img
-                    h={{ xl: "750px", lg: "500px", md: "300px", sm: "200px", base: "200px" }}
-                    src={image}
-                    alt="capa"
-                    objectFit={"cover"}
-                />
+                <Link href={`/movies/${it.id}`}>
+                    <Img
+                        zIndex={"1"}
+                        h={{ xl: "750px", lg: "500px", md: "300px", sm: "200px", base: "200px" }}
+                        src={image}
+                        alt="capa"
+                        objectFit={"cover"}
+                    /></Link>
                 {/* <Flex mt={"-300px"} color={"white"} h={"290px"}>
                     <Flex
                         backdropFilter="auto"
