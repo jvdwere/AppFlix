@@ -35,11 +35,8 @@ export default function Home() {
 
     return (
         <>
-            <HeaderL />
-            <Box>
+            <HeaderL/>
                 <BannerSlide state={state} />
-            </Box>
-        
                 <MoviesRow state={state} cat={trending} lista="Destaques do Mes" />
                 <MoviesRow state={state} cat={next} lista="Proximos lançamentos" />
                 <MoviesRow state={state} cat={popular} lista="Populares" />
