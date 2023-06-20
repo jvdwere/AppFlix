@@ -65,14 +65,15 @@ const MoviesRow = ({ cat, lista, tema }) => {
     <>
       <Box w={{ xl: "96%", lg: "94%", md: "92%", sm: "90%" }} margin={"auto"} mt={'50px'} >
 
-        <Flex w="100%">
+        {/* <Flex w="100%">
+          <Flex> */}
           <Flex>
-            <Text className='categories' w="300px">{lista}</Text>
-           </Flex>
+            <Text className='categories' w="300px">{lista}</Text> <Link href={`/movies/lista`}><Text color={"blue.400"}>hello</Text></Link></Flex>
+           {/* </Flex>
           <Flex w="100%" justifyContent={"end"}>
-            <Link href={`${""}`}><Text color={"blue.400"}>hello</Text></Link>
-          </Flex>
+           
         </Flex>
+        </Flex>  */}
 
         <Slider className="slider-cat" {...settings}>
           {state && state.map((item) => <MyCard it={item} img={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.poster_path}`} key={item.title} />)}

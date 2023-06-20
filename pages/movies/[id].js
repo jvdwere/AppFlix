@@ -21,7 +21,7 @@ export default function Movie() {
                 `${apiBase}/movie/${id}?api_key=${apiKey}&language=pt-BR`);
             const data = await response.json();
             setState(data);
-            // console.log(data);
+            //console.log(data);
             //console.log(state);
             if (!state) throw 'porblema na requisicao'
         } catch (error) {
@@ -34,6 +34,7 @@ export default function Movie() {
     useEffect(() => {
         fetchAllData()
     }, []);
+
     return (
         <>
             <Flex w={"100%"} justify={"center"}>
