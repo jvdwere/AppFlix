@@ -1,20 +1,24 @@
-import react from "react";
-import { Box, Flex } from "@chakra-ui/react";
+import React from "react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import Hamburger from "./Menu/Hamburger";
-import SearchInput from "./SearchInput";
+import SearchButton from "./SearchButton";
 import LogButton from "../Auth/LogButton";
+import Link from "next/link";
 
 const HeaderL = () => {
-
+   
     return (
         <Flex
             className="HeaderL"
+            backdropFilter="auto"
+            backdropBrightness='70%'
+            backdropBlur={"10px"}
             alignItems={"center"}>
-            <Hamburger />
+            <Heading ml="20px" color={"white"}><Link href={"/"}>LOGO</Link></Heading>
             <Flex
                 justifyContent={"center"}
                 width={"100%"}>
-                <SearchInput />
+                <SearchButton />
             </Flex>
             <LogButton />
         </Flex>
