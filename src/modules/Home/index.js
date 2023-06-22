@@ -37,11 +37,11 @@ export default function Home() {
         <>
             <HeaderL/>
                 <BannerSlide state={state} />
-                <MoviesRow state={state} cat={trending} lista="Destaques do Mes" />
-                <MoviesRow state={state} cat={next} lista="Proximos lançamentos" />
-                <MoviesRow state={state} cat={popular} lista="Populares" />
-                <MoviesRow state={state} cat={discover} tema={action} lista="Ação" />
-                <MoviesRow state={state} cat={discover} tema={terror} lista="terror" />
+                <MoviesRow state={state} cat={trending} lista="Destaques do Mes" url="/movies/lista/trending"/>
+                <MoviesRow state={state} cat={next} lista="Proximos lançamentos" url="/movies/lista/next"/>
+                <MoviesRow state={state} cat={popular} lista="Populares" url="/movies/lista/popular"/>
+                <MoviesRow state={state} cat={discover} tema={action} url="/movies/lista/action" lista="Ação" />
+                <MoviesRow state={state} cat={discover} tema={terror} url="/movies/lista/terror"lista="terror" />
         
         </>
 

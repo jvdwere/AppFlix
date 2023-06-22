@@ -14,11 +14,10 @@ export default function Page() {
             setLoading(true);
 
             const response = await fetch(
-                `${apiBase}/trending/movie/day?api_key=${apiKey}&language=pt-BR`);
+                `${apiBase}/discover/movie?api_key=${apiKey}&language=pt-BR&with_genres=27`);
             const data = await response.json();
             setState(data.results);
-            console.log(data);
-            console.log(state);
+          
             if (!state) throw 'porblema na requisicao'
         } catch (error) {
             console.log(error)

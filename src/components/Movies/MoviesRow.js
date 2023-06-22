@@ -7,7 +7,7 @@ import { apiBase, apiKey } from "../../../lib/tmdb";
 import Link from "next/link";
 
 
-const MoviesRow = ({ cat, lista, tema }) => {
+const MoviesRow = ({ cat, lista, tema, url }) => {
 
 
   const [state, setState] = useState();
@@ -16,9 +16,9 @@ const MoviesRow = ({ cat, lista, tema }) => {
       const response = await fetch(
         `${apiBase}${cat}?api_key=${apiKey}&language=pt-BR${tema}`
       );
-
+     
       const data = await response.json();
-
+      
       setState(data.results);
     }
     call();
@@ -68,7 +68,7 @@ const MoviesRow = ({ cat, lista, tema }) => {
         {/* <Flex w="100%">
           <Flex> */}
           <Flex>
-            <Text className='categories' w="300px">{lista}</Text> <Link href={`/movies/lista`}><Text color={"blue.400"}>hello</Text></Link></Flex>
+            <Text className='categories' w="300px">{lista}</Text> <Link href={`${url}`}><Text color={"blue.400"}>hello</Text></Link></Flex>
            {/* </Flex>
           <Flex w="100%" justifyContent={"end"}>
            

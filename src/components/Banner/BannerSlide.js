@@ -8,7 +8,6 @@ const BannerSlider = ({state}) => {
 
 
   const settings = {
-
     className: "center",
     centerMode: true,
     infinite: true,
