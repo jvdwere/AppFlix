@@ -1,15 +1,22 @@
-import { Flex, Icon, Heading, Text } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import { SearchIcon } from '@chakra-ui/icons'
+import Link from "next/link";
 
 
 
 const SearchButton = () => {
 
     return (
-        <Flex alignItems={"center"}>
-           <Text fontSize={"20pt"} fontStyle={"bold"} fontcolor={"yellow.500"}>Buscar</Text>
-            <Icon h={"30px"} >{<SearchIcon />} </Icon> 
-        </Flex>
+
+        <ButtonGroup alignItems={"center"}>
+            <Link href={"/search"}>
+                <Button fontSize={"20pt"} fontStyle={"bold"} bg={"#ECC94B"}>
+                    Buscar
+                    <SearchIcon ml="5px" boxSize={"25px"} />
+                </Button>
+            </Link>
+        </ButtonGroup>
+
     )
 
 }
