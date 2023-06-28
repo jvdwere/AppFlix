@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider>
       <Layout>
+        <HeaderL/>
         <Component {...pageProps} />
       </Layout>
     </ChakraProvider>)

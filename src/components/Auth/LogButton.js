@@ -3,5 +3,5 @@ import {GiHamburgerMenu } from 'react-icons/gi';
 
 export default function LogButton(){
     return (
-    <Button mr={"20px"} colorScheme="teal" w={"100px"} p={1}>Entra</Button>)
+    <Button mr={"20px"} bg="#64ED8A" w={"100px"} p={1}>Entrar</Button>)
 }
