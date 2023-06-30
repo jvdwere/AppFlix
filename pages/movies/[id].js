@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { apiBase, apiKey } from "@/lib/tmdb";
 import { addHours, parseISO, isAfter } from 'date-fns';
 import { format } from 'date-fns-tz';
+import { bg } from "date-fns/locale";
 
 
 export default function Movie() {
@@ -57,62 +58,62 @@ export default function Movie() {
         return formattedDate
     }
 
-    const basicBoxStyles = {
-        display: 'flex',
-        width: '1920px',
-        height: '1080px',
-        background:
-            `url(https://www.themoviedb.org/t/p/original/${state?.backdrop_path}) center/cover no-repeat`,
-    }
+
 
     return (
 
-        <Box sx={basicBoxStyles} bg="blackAlpha.900">
+        <Flex
+            boxSize={"border-box"}
+            bg={`url(https://www.themoviedb.org/t/p/original/${state?.backdrop_path}) center/cover no-repeat`} >
+            <Flex
+                justifyContent={"center"}
+                h={"2000"}
+                backgroundImage={"linear-gradient(0deg, rgba(0,0,0,1) 40%, rgba(0,0,0,0.9514180672268907) 60%, rgba(0,0,0,0.8421743697478992) 80%, rgba(0,0,0,0.7021183473389356) 100%)"}  >
+                <Box w={'70%'}mt="200px">
+                    <Flex>
+                        {loading && !state && <Flex><Spinner
+                            thickness='8px'
+                            speed='0.65s'
+                            emptyColor='gray.200'
+                            color='blue.500'
+                            size='xl'
+                        /></Flex>}
+                        <Box>
+                            <Box width={"70%"} >
+                                <Box >
+                                    <Heading color={"white"} fontSize={"40pt"}>{state?.title}</Heading>
+                                    <Text color={"white"} fontSize={'10.5pt'}>{state?.tagline}</Text>
+                                    <Text color={"white"} fontSize={'9pt'} mt='10px'>{handleTimeMovie()}</Text>
+                                    <ButtonGroup mt="50px"><Button>Assitir trailer</Button><Button>Favorito</Button></ButtonGroup>
+                                    <Flex mt={'30px'} alignContent={'center'}>
+                                        {state && state?.genres.map((item) => (
+                                            <Text ml="10px" fontSize={"10pt"} color={'white'}>{item.name}</Text>
+                                        ))}
 
-            <Box p={"300px"} zIndex={"999"} w={'100%'} h={"2000"} backgroundImage={"linear-gradient(0deg, rgba(0,0,0,1) 40%, rgba(0,0,0,0.9514180672268907) 60%, rgba(0,0,0,0.8421743697478992) 80%, rgba(0,0,0,0.7021183473389356) 100%)"}  >
-                <Flex>
-                    {loading && !state && <Flex><Spinner
-                        thickness='8px'
-                        speed='0.65s'
-                        emptyColor='gray.200'
-                        color='blue.500'
-                        size='xl'
-                    /></Flex>}
-                    <Box>
-                        <Box width={"70%"} mt="200px">
-                            <Box w={"750px"}>
-                                <Heading color={"white"} fontSize={"40pt"}>{state?.title}</Heading>
-                                <Text color={"white"} fontSize={'10.5pt'}>{state?.tagline}</Text>
-                                <Text color={"white"} fontSize={'9pt'} mt='10px'>{handleTimeMovie()}</Text>
-                                <ButtonGroup mt="50px"><Button>Assitir trailer</Button><Button>Favorito</Button></ButtonGroup>
-                                <Flex mt={'30px'} alignContent={'center'}>
-                                    {state && state?.genres.map((item) => (
-                                        <Text ml="10px" fontSize={"10pt"} color={'white'}>{item.name}</Text>
-                                    ))}
-
-                                </Flex>
-                                <Text mt="10px" color={"white"} fontSize={"11pt"}>Data de Lançamento:   {formatDate()} </Text>
+                                    </Flex>
+                                    <Text mt="10px" color={"white"} fontSize={"11pt"}>Data de Lançamento:   {formatDate()} </Text>
 
 
-                                <Text mt="30px" color={"white"} fontSize={"11pt"}>{state?.overview}</Text>
+                                    <Text mt="30px" color={"white"} fontSize={"11pt"}>{state?.overview}</Text>
+                                </Box>
                             </Box>
                         </Box>
+                        <Image h={{ xl:"600px", lg: "500px", md: "400px", sm: "300px", base: "200px" }}  src={`https://www.themoviedb.org/t/p/original/${state?.poster_path}`} alt="poster" />
+                    </Flex>
+                    <Box mt={'50px'}>
+                        <Heading color="white">Produzido por:</Heading>
+                        <SimpleGrid columns={5} spacing={2}>
+                            {state && state?.production_companies.map((item) => (
+                                <Flex alignItems={"center"} w={"230px"} mt={'30px'}>
+                                    <Box bg='gray.300' p={2} borderRadius={'10px'}>
+                                        <Image alt='logo' src={`https://www.themoviedb.org/t/p/original/${item.logo_path}`} />
+                                    </Box>
+                                </Flex>
+                            ))}
+                        </SimpleGrid>
                     </Box>
-                    <Image h="600px" ml='150px' src={`https://www.themoviedb.org/t/p/original/${state?.poster_path}`} alt="poster" />
-                </Flex>
-                <Box mt={'50px'}>
-                    <Heading color="white">Produzido por:</Heading>
-                    <SimpleGrid columns={5} spacing={2}>
-                        {state && state?.production_companies.map((item) => (
-                            <Flex alignItems={"center"} w={"230px"} mt={'30px'}>
-                                <Box bg='gray.300' p={2} borderRadius={'10px'}>
-                                    <Image alt='logo' src={`https://www.themoviedb.org/t/p/original/${item.logo_path}`} />
-                                </Box>
-                            </Flex>
-                        ))}
-                    </SimpleGrid>
                 </Box>
-            </Box>
-        </Box>
+            </Flex>
+        </Flex>
     )
 }
