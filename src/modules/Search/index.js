@@ -36,8 +36,7 @@ const Search = () => {
 
 
     return (
-        <Box h={"1080"}>
-
+        <Box h={"100%"} >
             <Flex justifyContent={"center"} bg={"black"}>
                 <Flex mt={"150px"}>
                     <Link href={"/"}>
@@ -57,11 +56,13 @@ const Search = () => {
                 </Flex>
             </Flex>
             <Heading textAlign={'center'} mt={'50px'} color={'white'}>{notFoundMovies}</Heading>
-            <SimpleGrid columns={6} spacing={10}>
-                {resultsMovies && resultsMovies.map((item) =>
-                    <MyCard it={item} img={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.poster_path}`} key={item.title} />
-                )}
-            </SimpleGrid>
+            <Flex w={"70%"}justify={"right"}>
+                <SimpleGrid columns={4} spacing={10}>
+                    {resultsMovies && resultsMovies.map((item) =>
+                        <MyCard it={item} img={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${item.poster_path}`} key={item.title} />
+                    )}
+                </SimpleGrid>
+            </Flex>
         </Box>
     )
 }
