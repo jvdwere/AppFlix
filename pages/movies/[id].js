@@ -1,15 +1,39 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-key */
-import { Flex, Text, Image, Box, Heading, Button, ButtonGroup, SimpleGrid, Spinner } from "@chakra-ui/react"
+import {
+    Flex, Image, Box, Heading, Button, ButtonGroup, SimpleGrid, Spinner, Text,
+    Modal,
+    ModalOverlay,
+    ModalHeader,
+    ModalContent,
+    ModalCloseButton,
+    ModalBody,
+    Lorem,
+    ModalFooter,
+    FormControl,
+    FormLabel,
+    Input,
+    useDisclosure
+} from "@chakra-ui/react";
+
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { apiBase, apiKey } from "@/lib/tmdb";
-import { addHours, parseISO, isAfter } from 'date-fns';
+import { parseISO } from 'date-fns';
 import { format } from 'date-fns-tz';
-import { bg } from "date-fns/locale";
+import { MovieTrailer } from '../../src/components/Movies/MovieTrailer';
+
 
 
 export default function Movie() {
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const initialRef = React.useRef(null)
+    const finalRef = React.useRef(null)
+
+
 
     const router = useRouter()
     const { id } = router.query
@@ -25,6 +49,7 @@ export default function Movie() {
                     `${apiBase}/movie/${id}?api_key=${apiKey}&language=pt-BR`);
                 const data = await response.json();
                 setState(data);
+                console.log(data.video.true)
             }
         } catch (error) {
             console.log(error)
@@ -65,11 +90,30 @@ export default function Movie() {
         <Flex
             boxSize={"border-box"}
             bg={`url(https://www.themoviedb.org/t/p/original/${state?.backdrop_path}) center/cover no-repeat`} >
+            <>
+
+
+                <Modal
+                    initialFocusRef={initialRef}
+                    finalFocusRef={finalRef}
+                    isOpen={isOpen}
+                    onClose={onClose}
+                >
+                    <ModalOverlay />
+                    <ModalContent>
+                       <MovieTrailer/>
+                        <ModalFooter>
+                            <Button onClick={onClose}>Cancel</Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+            </>
             <Flex
+                w={"100%"}
                 justifyContent={"center"}
                 h={"2000"}
                 backgroundImage={"linear-gradient(0deg, rgba(0,0,0,1) 40%, rgba(0,0,0,0.9514180672268907) 60%, rgba(0,0,0,0.8421743697478992) 80%, rgba(0,0,0,0.7021183473389356) 100%)"}  >
-                <Box w={'70%'}mt="200px">
+                <Box w={'70%'} mt="200px">
                     <Flex>
                         {loading && !state && <Flex><Spinner
                             thickness='8px'
@@ -84,7 +128,9 @@ export default function Movie() {
                                     <Heading color={"white"} fontSize={"40pt"}>{state?.title}</Heading>
                                     <Text color={"white"} fontSize={'10.5pt'}>{state?.tagline}</Text>
                                     <Text color={"white"} fontSize={'9pt'} mt='10px'>{handleTimeMovie()}</Text>
-                                    <ButtonGroup mt="50px"><Button>Assitir trailer</Button><Button>Favorito</Button></ButtonGroup>
+                                    <ButtonGroup mt="50px">
+                                        <Button onClick={onOpen}>Assitir trailer</Button><Button>Favorito</Button>
+                                    </ButtonGroup>
                                     <Flex mt={'30px'} alignContent={'center'}>
                                         {state && state?.genres.map((item) => (
                                             <Text ml="10px" fontSize={"10pt"} color={'white'}>{item.name}</Text>
@@ -98,7 +144,7 @@ export default function Movie() {
                                 </Box>
                             </Box>
                         </Box>
-                        <Image h={{ xl:"600px", lg: "500px", md: "400px", sm: "300px", base: "200px" }}  src={`https://www.themoviedb.org/t/p/original/${state?.poster_path}`} alt="poster" />
+                        <Image h={{ xl: "600px", lg: "500px", md: "400px", sm: "300px", base: "200px" }} src={`https://www.themoviedb.org/t/p/original/${state?.poster_path}`} alt="poster" />
                     </Flex>
                     <Box mt={'50px'}>
                         <Heading color="white">Produzido por:</Heading>
