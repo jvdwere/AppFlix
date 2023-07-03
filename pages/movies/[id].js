@@ -49,8 +49,8 @@ export default function Movie() {
                     `${apiBase}/movie/${id}?api_key=${apiKey}&language=pt-BR`);
                 const data = await response.json();
                 setState(data);
-                console.log(data.video.true)
             }
+
         } catch (error) {
             console.log(error)
         }
@@ -98,13 +98,13 @@ export default function Movie() {
                     finalFocusRef={finalRef}
                     isOpen={isOpen}
                     onClose={onClose}
-                >
+                    size={'4xl'}
+                
+                    > 
                     <ModalOverlay />
-                    <ModalContent>
-                       <MovieTrailer/>
-                        <ModalFooter>
-                            <Button onClick={onClose}>Cancel</Button>
-                        </ModalFooter>
+                    <ModalContent bg={"back"}>
+                      
+                        <MovieTrailer />
                     </ModalContent>
                 </Modal>
             </>
