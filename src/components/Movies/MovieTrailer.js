@@ -3,19 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import {
-    Flex, Image, Box, Heading, Button, ButtonGroup, SimpleGrid, Spinner,
-    Modal,
-    ModalOverlay,
-    ModalHeader,
-    ModalContent,
-    ModalCloseButton,
-    ModalBody,
-    Lorem,
-    ModalFooter,
-    Text,
-    FormControl,
-    FormLabel,
-    Input,
+    Flex, Image, Box, Heading, Button, ButtonGroup, SimpleGrid, Spinner, Text
+
 } from "@chakra-ui/react";
 import ReactPlayer from 'react-player/youtube';
 import { apiBase, apiKey } from "@/lib/tmdb";
@@ -32,9 +21,13 @@ export const MovieTrailer = () => {
 
 
     const [loading, setLoading] = useState(false)
+
+    const notFaundMenssage = "Trailer Nao encontrado"
     const fetchAllData = async () => {
         try {
-
+            if (state?.results.key === undefined) {
+                return notFaundMenssage
+            }
             if (id) {
                 setLoading(true);
                 const response = await fetch(
@@ -42,19 +35,23 @@ export const MovieTrailer = () => {
                 const data = await response.json();
                 setState(data);
             }
+
         } catch (error) {
             console.log(error)
         }
         finally {
             setLoading(false)
         }
+
     }
     useEffect(() => {
         fetchAllData()
     }, [id]);
-    if (!state) {
-
+    if (state?.results === 0) {
+        return <Text>Treiler Nao  encontrado</Text>
     }
+
+
 
 
     return (
@@ -68,6 +65,7 @@ export const MovieTrailer = () => {
                         color='blue.500'
                         size='xl'
                     />}
+                <Text>{notFaundMenssage}</Text>
                 <ReactPlayer width={"900px"} height={'500px'} controls={true} playing={true} url={`https://www.youtube.com/watch?v=${state?.results[0].key}`} />
             </Box>
         </Flex>
