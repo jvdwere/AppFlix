@@ -25,9 +25,7 @@ export const MovieTrailer = () => {
     const notFaundMenssage = "Trailer Nao encontrado"
     const fetchAllData = async () => {
         try {
-            if (state?.results.key === undefined) {
-                return notFaundMenssage
-            }
+      
             if (id) {
                 setLoading(true);
                 const response = await fetch(
