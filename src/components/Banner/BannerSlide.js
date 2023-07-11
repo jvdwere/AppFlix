@@ -14,6 +14,9 @@ const BannerSlider = ({state}) => {
     centerPadding: "160px",
     slidesToShow: 1,
     speed: 500,
+    autoplay: true,
+    autoplaySpeed: 5500,
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
