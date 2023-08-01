@@ -99,11 +99,11 @@ export default function Movie() {
                     isOpen={isOpen}
                     onClose={onClose}
                     size={'4xl'}
-                
-                    > 
+
+                >
                     <ModalOverlay />
                     <ModalContent bg={"back"}>
-                      
+
                         <MovieTrailer />
                     </ModalContent>
                 </Modal>
@@ -125,7 +125,7 @@ export default function Movie() {
                         <Box>
                             <Box width={"70%"} >
                                 <Box >
-                                    <Heading color={"white"} fontSize={"40pt"}>{state?.title}</Heading>
+                                    <Heading color={"white"} fontSize={{ min: "2vw", max: '3vw' }}>{state?.title}</Heading>
                                     <Text color={"white"} fontSize={'10.5pt'}>{state?.tagline}</Text>
                                     <Text color={"white"} fontSize={'9pt'} mt='10px'>{handleTimeMovie()}</Text>
                                     <ButtonGroup mt="50px">
@@ -144,7 +144,7 @@ export default function Movie() {
                                 </Box>
                             </Box>
                         </Box>
-                        <Image h={{ xl: "600px", lg: "500px", md: "400px", sm: "300px", base: "200px" }} src={`https://www.themoviedb.org/t/p/original/${state?.poster_path}`} alt="poster" />
+                         <Image h={{ xl: "600px", lg: "500px", md: "400px", sm: "300px", base: "200px" }} src={`https://www.themoviedb.org/t/p/original/${state?.poster_path}`} alt="poster" />
                     </Flex>
                     <Box mt={'50px'}>
                         <Heading color="white">Produzido por:</Heading>

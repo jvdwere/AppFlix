@@ -13,7 +13,8 @@ const MovieBanner = ({ image, name, sinopse, date, it }) => {
                 <Link href={`/movies/${it.id}`}>
                     <Img
                         zIndex={"1"}
-                        h={{ xl: "750px", lg: "500px", md: "300px", sm: "200px", base: "200px" }}
+                        // h={{ xl: "750px", lg: "500px", md: "300px", sm: "200px", base: "200px" }}
+                        w={"75vw"}
                         src={image}
                         alt="capa"
                         objectFit={"cover"}
